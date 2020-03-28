@@ -9,11 +9,16 @@
 import Foundation
 
 // Double Linked List
-public class LinkedList
+public class LinkedList<T>
 {
-    // Mark: - Keep references of head and tail
-    fileprivate var _head: Node?
-    fileprivate var _tail: Node?
+    // MARK: - Keep references of head and tail
+    private var _head: Node<T>?
+    private var _tail: Node<T>?
+    
+    // MARK: - Swift 5.2 <3
+    func callAsFunction() -> Int {
+        self.size
+    }
     
     // MARK: - Computed Properties
     public var isEmpty: Bool {
@@ -32,16 +37,16 @@ public class LinkedList
         return index
     }
     
-    public var head: Node? {
+    public var head: Node<T>? {
         return _head
     }
     
-    public var tail : Node? {
+    public var tail : Node<T>? {
         return _tail
     }
     
     // MARK: - Helper functions
-    public func insert(value: String) {
+    public func insert(value: T) {
         let newNode: Node = Node(value: value)
         
         if _head != nil {
@@ -55,7 +60,7 @@ public class LinkedList
         _head = newNode
     }
     
-    public func append(value: String) {
+    public func append(value: T) {
         let newNode: Node = Node(value: value)
         
         if _tail != nil {
@@ -68,7 +73,7 @@ public class LinkedList
         _tail = newNode
     }
     
-    public func nodeAtIndex(_ index: Int) -> Node? {
+    public func nodeAtIndex(_ index: Int) -> Node<T>? {
       if index >= 0 {
           var node = _head
           var iterationLeft = index
@@ -101,7 +106,7 @@ public class LinkedList
         }
     }
     
-    public func remove(node: Node) {
+    public func remove(node: Node<T>) {
         let prevNode = node.previous
         let nextNode = node.next
         

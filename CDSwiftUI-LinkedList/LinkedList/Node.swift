@@ -8,25 +8,25 @@
 
 import Foundation
 
-final public class Node {
+final public class Node<T>{
     // Content of Node
-    fileprivate var _value: String
-    
+    private var _value: T
+        
     // MARK: - Double Linked List Properties
     weak var previous: Node? // Mark previous weak to make sure that it is correctly erased if previous is deleted
     var next: Node?
     
-    init(value: String) {
+    init(value: T) {
         _value = value
     }
     
     // MARK: - Getter
-    public func getValue() -> String {
+    public func getValue() -> T {
         return _value;
     }
     
     // MARK: - Setter
-    public func setValue(newValue: String) {
+    public func setValue(newValue: T) {
         _value = newValue
     }
 }

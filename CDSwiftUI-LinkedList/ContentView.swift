@@ -11,11 +11,11 @@ import SwiftUI
 struct ContentView: View {
     
     // The displayed Element
-    @State fileprivate var displayedNode: Node?
-    @State fileprivate var stepperValue: Int = 0
-    @State fileprivate var removeStepperValue: Int = 0
+    @State private var displayedNode: Node<String>?
+    @State private var stepperValue: Int = 0
+    @State private var removeStepperValue: Int = 0
     
-    fileprivate var linkedList: LinkedList
+    private var linkedList: LinkedList<String>
     
     init() {
         // Creating List for Test Purposes
@@ -25,6 +25,9 @@ struct ContentView: View {
         linkedList.append(value: self.generateRandomString())
         linkedList.append(value: self.generateRandomString())
         linkedList.append(value: self.generateRandomString())
+        
+        // MARK: - Swift 5.2 <3
+        print("Current size: \(linkedList())") // actually calls callAsFunction()
     }
     
     
@@ -199,7 +202,7 @@ struct ContentView: View {
         }
     }
     
-    fileprivate func generateRandomString() -> String {
+    private func generateRandomString() -> String {
         return String((0..<8 ).map{ _ in "qwertyuinm123456789".randomElement()! })
     }
     
